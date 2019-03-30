@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.ldk.druking.mapper.MyMapper">
+
+	<select id="getTime" resultType="string">
+		select now()
+	</select>
+
+	<select id="getSimpleTeam" resultType="com.ldk.druking.model.Team">
+		select * from SimpleTeam
+	</select>
+
+	<select id="getTeamsByUplaoder" resultType="java.util.Map">
+		select * from SimpleTeam where uploader = #{uploader} order by id asc
+	</select>
+	
+	<select id="getAllTeams" resultType="com.ldk.druking.model.Team">
+		select * from SimpleTeam order by id desc
+	</select>
+	
+	
+	<select id="getTeamsByCampus" resultType="com.ldk.druking.model.Team">
+		select * from SimpleTeam where campus = #{campus}
+	</select>
+	
+	<select id="getTeamById" resultType="com.ldk.druking.model.Team">
+		select * from SimpleTeam where id = #{id}
+	</select>
+	
+	<select id="getTeamsByFilterKeyword" resultType="com.ldk.druking.model.Team">
+		select * from SimpleTeam 
+		where 
+		CONCAT (
+			pastor, " ",
+			elder, " ", 
+			cheif, " ", 
+			pastor, " ",
+			manager, " ", 
+			excutors, " ",
+			" "
+		) 
+		like CONCAT('%',#{keyword},'%')
+	</select>
+	
+	
+	<select id="getTeamsByFilter" resultType="com.ldk.druking.model.Team">
+		select * from SimpleTeam where 1
+		<if test="campus != -1">
+    		AND campus = #{campus}
+  		</if>
+  		<if test="department != -1">
+    		AND department = #{department}
+  		</if>
+  		<if test="team1 != null">
+    		AND team1 like CONCAT('%',#{team1},'%')
+  		</if>
+  		<if test="team2 != null">
+    		AND team2 like CONCAT('%',#{team2},'%')
+  		</if>
+  		<if test="pastor != null">
+    		AND pastor like CONCAT('%',#{pastor},'%')
+  		</if>
+  		<if test="elder != null">
+    		AND elder like CONCAT('%',#{elder},'%')
+  		</if>
+  		<if test="cheif != null">
+    		AND cheif like CONCAT('%',#{cheif},'%')
+  		</if>
+  		<if test="manager != null">
+    		AND manager like CONCAT('%',#{manager},'%')
+  		</if>
+	</select>
+	
+
+	<update id="updateTeam">
+		update SimpleTeam set
+		campus = #{campus},
+		department = #{department},
+		team1 = #{team1},
+		team2 = #{team2},
+		pastor = #{pastor},
+		elder = #{elder},
+		cheif = #{cheif},
+		manager = #{manager},
+		excutors = #{excutors},
+		uploader = #{uploader}
+		where id = #{id}
+	</update>
+	
+	<update id="saveExcutors">
+	update SimpleTeam set
+		excutors = #{excutors}
+		where id = #{id}
+	
+	</update>
+
+	<insert id="insertTeam" useGeneratedKeys="true" keyProperty="id">
+		insert into SimpleTeam (campus,department,team1,team2,pastor, elder, cheif,
+		manager, excutors, uploader)
+		values
+		(#{campus},#{department},#{team1},#{team2},#{pastor},#{elder},#{cheif},#{manager},#{excutors},#{uploader})
+	</insert>
+
+	<delete id="deleteTeam">
+		delete from SimpleTeam where id = #{id}
+	</delete>
+
+	<select id="getExcutors" resultType="String">
+		select excutors from SimpleTeam where id = #{id}
+	</select>
+
+
+
+
+
+</mapper>

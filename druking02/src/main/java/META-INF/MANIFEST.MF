@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Class-Path: spring-beans-4.1.7.RELEASE.jar jcl-over-slf4j-1.6.6.jar sp
+ ring-security-config-4.0.3.RELEASE.jar spring-test-4.1.7.RELEASE.jar 
+ mysql-connector-java-5.1.36.jar javax.inject-1.jar jackson-annotation
+ s-2.5.0.jar spring-jdbc-4.1.7.RELEASE.jar mybatis-spring-1.2.2.jar sp
+ ring-aop-4.1.7.RELEASE.jar jackson-databind-2.5.4.jar spring-expressi
+ on-4.1.7.RELEASE.jar mybatis-3.2.8.jar slf4j-api-1.6.6.jar log4j-1.2.
+ 15.jar aopalliance-1.0.jar spring-web-4.1.7.RELEASE.jar jackson-core-
+ 2.5.4.jar spring-core-4.1.7.RELEASE.jar aspectjrt-1.6.10.jar log4jdbc
+ -remix-0.2.7.jar spring-tx-4.1.7.RELEASE.jar slf4j-log4j12-1.6.6.jar 
+ spring-context-4.1.7.RELEASE.jar spring-security-core-4.0.3.RELEASE.j
+ ar spring-webmvc-4.1.7.RELEASE.jar spring-security-web-4.0.3.RELEASE.
+ jar jstl-1.2.jar
+
