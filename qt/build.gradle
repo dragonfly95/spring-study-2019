@@ -1,56 +1,49 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.bmuschko:gradle-tomcat-plugin:2.0'
-    }
-}
-
-
-group 'org.onnuri.qt0414'
-version '1.0-SNAPSHOT'
-
+apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'com.bmuschko.tomcat'
 
-war {
-    baseName = 'qt'
-    version = '1.0-BUILD-SNAPSHOT'
-}
 
-sourceCompatibility = 1.8
+// JDK 7
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile "org.springframework:spring-context:4.0.0.RELEASE"
-    compile "org.springframework:spring-webmvc:4.0.0.RELEASE"
-    compile "org.aspectj:aspectjrt:1.7.4"
 
-    compile 'javax.servlet:jstl:1.2'
-    compile("javax.inject:javax.inject:1")
-    compile("org.slf4j:slf4j-api:1.7.5")
-    compile("org.slf4j:jcl-over-slf4j:1.7.5")
-    compile("org.slf4j:slf4j-log4j12:1.7.5")
-    compile("log4j:log4j:1.2.15")
+	compile 'ch.qos.logback:logback-classic:1.1.3'
+	compile 'org.springframework:spring-webmvc:4.1.6.RELEASE'
+	compile 'javax.servlet:jstl:1.2'
 
-
-    def tomcatVersion = '7.0.57'
-    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
-            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
-    tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
-        exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
-    }
-    
 }
 
 
 // context where tomcat is deployed, by defautl localhost:8080/
 tomcatRun.contextPath = '/'
 tomcatRunWar.contextPath = '/'
+
+dependencies {
+    def tomcatVersion = '7.0.59'
+
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+}
+
+
+buildscript {
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.2.2'
+    }
+}
+
+
 
 
