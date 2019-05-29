@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.system.restaurant.repository.MenuRepository">
+
+    <select id="menulist" resultType="com.system.restaurant.domain.Menu">
+        select menu_id, menu_name, menu_price, cooking_time from tbl_menu
+    </select>
+
+    <select id="findById" parameterType="int" resultType="com.system.restaurant.domain.Menu">
+        select menu_id, menu_name, menu_price, cooking_time from tbl_menu
+        where menu_id = #{id}
+    </select>
+
+    <insert id="post" parameterType="com.system.restaurant.domain.Menu">
+        insert into tbl_menu(menu_name, menu_price, cooking_time)
+        values (#{menu_name}, #{menu_price}, #{cooking_time})
+    </insert>
+
+    <update id="put" parameterType="com.system.restaurant.domain.Menu">
+        update tbl_menu set
+        menu_name = #{menu_name},
+        menu_price = #{menu_price},
+        cooking_time = #{cooking_time}
+        where menu_id =#{menu_id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from tbl_menu where menu_id = #{menu_id}
+    </delete>
+
+</mapper>
+
+
+

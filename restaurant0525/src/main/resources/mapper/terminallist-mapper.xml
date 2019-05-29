@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.system.restaurant.repository.TerminalRepository">
+
+    <select id="terminalList" resultType="com.system.restaurant.domain.Terminal">
+        select tbl_order.order_id, tbl_order.user_id, tbl_order.total_cost, tbl_order.cooking_status,
+        tbl_order_detail.order_detail_id, tbl_order_detail.message,
+        tbl_menu.menu_name, tbl_menu.menu_price,
+        tbl_user.user_name, tbl_user.user_type
+        from tbl_order
+        inner join tbl_order_detail on tbl_order.order_id = tbl_order_detail.order_id
+        inner join tbl_user on tbl_order.user_id = tbl_user.user_id
+        inner join tbl_menu on tbl_order_detail.menu_id = tbl_menu.menu_id;
+        <!--        select order_id, user_id, message, total_cost, cooking_status from tbl_order-->
+    </select>
+
+    <select id="findById" parameterType="int" resultType="com.system.restaurant.domain.Terminal">
+        select order_id, user_id, message, total_cost, cooking_status from tbl_order
+        where order_id = #{id}
+    </select>
+
+    <insert id="post" parameterType="com.system.restaurant.domain.Terminal">
+        insert into tbl_order(order_id, user_id, message, total_cost, cooking_status)
+        values (#{order_id}, #{message})
+    </insert>
+
+    <update id="put" parameterType="com.system.restaurant.domain.Terminal">
+        update tbl_order set
+        order_name = #{order_name},
+        order_price = #{order_price},
+        cooking_time = #{cooking_time}
+        where order_id =#{order_id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from tbl_order where order_id = #{order_id}
+    </delete>
+
+</mapper>
+
+
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.system.restaurant.repository.OrderDetailRepository">
+
+<!--    order_detail_id":0,"order_id":0,"menu_id":"57","message-->
+    <insert id="post"
+            useGeneratedKeys="true" keyProperty="order_detail_id"
+            parameterType="com.system.restaurant.domain.OrderDetail">
+        insert into tbl_order_detail(order_id, menu_id, message)
+        values (#{order_id}, #{menu_id}, #{message})
+    </insert>
+
+
+</mapper>
+
+
+
