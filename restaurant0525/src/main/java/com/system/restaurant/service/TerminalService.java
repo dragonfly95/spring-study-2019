@@ -7,7 +7,12 @@ import com.system.restaurant.domain.Terminal;
 import com.system.restaurant.repository.OrderDetailRepository;
 import com.system.restaurant.repository.OrderRepository;
 import com.system.restaurant.repository.TerminalRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.sql.SQLException;
@@ -16,23 +21,26 @@ import java.util.Iterator;
 
 
 @Service // Service 역할을 하는 bean 임을 선언한다.
-public class TerminalService {
+@Transactional
+public class TerminalService implements TerminalServiceIF {
 
-    @Resource
+    @Autowired
     TerminalRepository terminalRepository;
 
 
-    @Resource
+    @Autowired
     OrderRepository orderRepository;
 
 
-    @Resource
+    @Autowired
     OrderDetailRepository orderDetailRepository;
 
+    @Override
     public ArrayList<Terminal> terminalList() {
         return terminalRepository.terminalList();
     }
 
+  @Override
     public Terminal findById(int id) {
         return terminalRepository.findById(id);
     }
@@ -44,10 +52,11 @@ public class TerminalService {
      * @param orderRequestVO
      * @return
      */
-    public int post(OrderRequestVO orderRequestVO) {
+    @Override
+    @Transactional(readOnly=false, rollbackFor = { Exception.class } )
+    public int post(OrderRequestVO orderRequestVO) throws RuntimeException {
 
-
-            Order order = new Order();
+      Order order = new Order();
             order.setUser_id(orderRequestVO.getUser_id());
             order.setTotal_cost(orderRequestVO.getTotal_cost());
             order.setCooking_status("Not started");
@@ -67,10 +76,12 @@ public class TerminalService {
 //        return terminalRepository.post(terminalData);
     }
 
+  @Override
     public int put(Terminal terminalData) {
         return terminalRepository.put(terminalData);
     }
 
+  @Override
     public int delete(int order_id) {
         return terminalRepository.delete(order_id);
     }

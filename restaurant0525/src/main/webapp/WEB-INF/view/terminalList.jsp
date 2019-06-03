@@ -179,7 +179,7 @@ $('[name="user_name"]').val('홍낄똥'); $('[name="menu_name"]').val('스테이
                    alert('Added');
                  },
                  error: function() {
-                     alert('error');
+                     console.log('error');
                  }
                });
                

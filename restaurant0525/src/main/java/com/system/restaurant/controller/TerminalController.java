@@ -4,6 +4,8 @@ import com.system.restaurant.domain.Menu;
 import com.system.restaurant.domain.Terminal;
 import com.system.restaurant.service.MenuService;
 import com.system.restaurant.service.TerminalService;
+import com.system.restaurant.service.TerminalServiceIF;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,10 +21,10 @@ import java.util.ArrayList;
 @Controller
 public class TerminalController {
 
-    @Resource
-    TerminalService terminalService;
+    @Autowired
+    TerminalServiceIF terminalService;
 
-    @Resource
+    @Autowired
     MenuService menuService;
     /**
      * 메뉴 목록 jsp
@@ -56,40 +58,18 @@ public class TerminalController {
          */
     }
 
-//    /**
-//     * Terminal 에서 order 1건 조회 시
-//     */
-//    @RequestMapping(value = "/terminals/{order_id")
-//    public ResponseEntity<Terminal> terminalInquiry(@PathVariable("order_id") int order_id) {
-//        Terminal terminal = terminalService.findById(order_id);
-//        return new ResponseEntity<>(terminal, HttpStatus.ACCEPTED);
-//    }
-//
-//    /**
-//     * Terminal 에서의 order 등록
-//     */
+
+    /**
+     * Terminal 에서의 order 등록
+     */
     @RequestMapping(value = "/terminals", method = RequestMethod.POST)
     public ResponseEntity<Terminal> terminalPost (@RequestBody OrderRequestVO orderRequestVO)  {
-        terminalService.post(orderRequestVO);
+        try {
+            terminalService.post(orderRequestVO);
+        } catch (Exception e) {
+            return null;
+        }
         return new ResponseEntity<>(new Terminal(), HttpStatus.ACCEPTED);
     }
-//
-//    /**
-//     * Terminal 에서의 order 수정
-//     */
-//    @RequestMapping(value = "/terminals/{order_id}", method = RequestMethod.PUT)
-//    public ResponseEntity<Terminal> terminalPut(@RequestBody Terminal orderdata) {
-//        int affected = terminalService.put(orderdata);
-//        return new ResponseEntity<>(new Terminal(), HttpStatus.ACCEPTED);
-//    }
-//
-//    /**
-//     * Terminal 에서의 order 삭제
-//     */
-//    @RequestMapping(value = "/terminals/{order_id}", method = RequestMethod.DELETE)
-//    public ResponseEntity<Terminal> terminalDelete(@PathVariable("order_id") int order_id) {
-//        int affected = terminalService.delete(order_id);
-//        return new ResponseEntity<>(new Terminal(), HttpStatus.ACCEPTED);
-//    }
 }
 
