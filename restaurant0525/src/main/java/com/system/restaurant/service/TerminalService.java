@@ -21,7 +21,7 @@ import java.util.Iterator;
 
 
 @Service // Service 역할을 하는 bean 임을 선언한다.
-@Transactional
+// @Transactional
 public class TerminalService implements TerminalServiceIF {
 
     @Autowired
