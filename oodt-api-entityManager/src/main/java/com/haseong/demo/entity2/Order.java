@@ -36,6 +36,20 @@ public class Order {
   @JsonProperty
   private Set<OrderProduct> orderProducts = new LinkedHashSet<>();
 
+  
+//    final QOrderProduct orderProduct = QOrderProduct.orderProduct;
+//    final QOrder order = QOrder.order;
+//    final QShipping shipping = QShipping.shipping;
+//
+//    JPAQuery query = new JPAQuery(entityManager);
+//    JPAQuery fetch = query.from(order).
+//        distinct().leftJoin(order.orderProducts, orderProduct)
+//        .fetch()
+//        .leftJoin(order.shipping, shipping)
+//        .fetch();
+//    List<Order> list = fetch.list(order);
+  
+  
   public void setShipping(Shipping shipping) {
     this.shipping = shipping;
     shipping.setOrder(this);
