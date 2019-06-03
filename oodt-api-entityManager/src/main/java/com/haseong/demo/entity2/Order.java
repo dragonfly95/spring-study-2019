@@ -1,3 +1,7 @@
+/**
+ * @JsonProperty 
+ * @JsonIgnore - 배열인 경우 사용해야 함, fk  
+ */
 package com.haseong.demo.entity2;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
