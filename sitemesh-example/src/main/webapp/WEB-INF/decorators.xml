@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<decorators defaultdir="/WEB-INF/decorators">
+    <decorator name="top" page="top.jsp"/>
+    <decorator name="left" page="left.jsp"/>
+    <decorator name="right" page="right.jsp"/>
+    <decorator name="bottom" page="bottom.jsp"/>
+
+    <decorator name="layout" page="decolayout.jsp">
+      <pattern>/offering/*</pattern>
+        <pattern>/prlstps/**/*</pattern>
+    </decorator>
+    
+</decorators>
