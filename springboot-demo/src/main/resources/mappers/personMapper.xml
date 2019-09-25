@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.PersonMapper">
+
+    <insert id="insertUser" parameterType="com.example.demo.Person">
+        INSERT INTO person(first_name, last_name, stree_name, city, state, country)
+        VALUES(#{firstName}, #{lastName}, #{streetName}, #{city}, #{state}, #{country})
+    </insert>
+
+
+    <select id="selectAllPerson" resultType="com.example.demo.Person">
+        select * from person
+    </select>
+</mapper>
