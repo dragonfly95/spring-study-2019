@@ -16,3 +16,12 @@ https://hatssarjy.tistory.com/593
 swagger-ui.html 사용해보기
 
 ootd-api 설정참조 
+
+
+----------------------------
+spring security 적용기
+
+blog.
+https://wedul.site/170
+github
+https://github.com/weduls/wedulpos_boot
