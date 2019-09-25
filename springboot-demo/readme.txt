@@ -10,3 +10,9 @@ https://enterkey.tistory.com/320
 https://github.com/Simplify-study/SpringBootSample
 
 https://hatssarjy.tistory.com/593
+
+
+
+swagger-ui.html 사용해보기
+
+ootd-api 설정참조 
