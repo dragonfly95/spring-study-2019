@@ -21,6 +21,10 @@
 
     <context:component-scan base-package="com.system.restaurant"/>
 
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:db.properties"></property>
+    </bean>
+
     <!-- 데이터 소스 설정  -->
     <!--    class="org.springframework.jdbc.datasource.DriverManagerDataSource"-->
     <!--    class="org.apache.commons.dbcp.BasicDataSource"-->
