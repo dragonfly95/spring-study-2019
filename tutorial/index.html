@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>spring tutorial </title>
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+</head>
+<body>
+  
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12">
+        <br/>
+        <br/>
+        <br/>
+      </div>
+    </div>
+    <div class="jumbotron">
+      <h1 class="display-4">spring tutorial</h1>
+      <p class="lead">학습목표: Intellij를 이용해 스프링프레임워크를 활용할 수 있다</p>
+      <hr class="my-4">
+
+    </div>
+
+
+    <h5>개발툴</h5>
+    <ol>
+      <li>Intellij</li>
+      <li>
+        <div>vs code</div>
+        <ul>
+          <li>sublime text keymap </li>
+          <li>live server</li>
+          <li>jquery code snippet</li>
+          <li>maven project</li>
+        </ul>
+      </li>
+      <li>STS</li>
+    </ol>
+    <hr>
+
+
+
+
+    <div>Java 기본 개념</div>
+    <ol>
+      <li>
+        <div>Interface</div>
+        <ul>
+          <li>실제 구현내용은 없고 선언만 되어 있다</li>
+          <li>다중 구현을 위해 선언한다</li>
+          <li>인터페이스를 구현햐여 클래스로 사용할 수 있다</li>
+          <li>라이브러리를 잘 활용하기 위해서 인터페이스 정의가 필요하다</li>
+        </ul>
+      </li>
+      <li>
+        <div>abstract class</div>
+        <ul>
+          <li>추상클래스로 구현메소드와 추상메소드(선언만 된 메소드)가 혼재되어 있다 </li>
+          <li>반드시 상속을 받아 클래스로 사용해야 한다</li>
+        </ul>
+      </li>
+      <li>
+        <div>comple class</div>
+        <ul>
+          <li>인터페이스를 구현한 클래스이다 </li>
+          <li>구현되는 메소드로 구성되어 있다</li>
+          <li></li>
+        </ul>
+      </li>
+    </ol>
+
+    <hr/>
+
+    <ol>
+      <li>
+        <div>spring mvc 이해</div>
+        <ul>
+          <li>역할</li>
+          <li>controller - request/response 처리 </li>
+          <li>service - transaction, 비지니스 로직 처리 </li>
+          <li>mapper/repository/dao - data access 처리 </li>
+          <li>domain/dto/vo - db access 후 담는 객체, 또는 request후 담는 객체</li>
+        </ul>
+      </li>
+    </ol>
+
+    <hr>
+
+    <ol>
+      <li>
+        <div>restful api </div>
+        <p>
+          <img src="images/rest.png" alt="rest api" width="750">
+          <ul>
+            <li>HTTP URI(Uniform Resource Identifier)를 통해 자원(Resource)을 명시 </li>
+            <li>HTTP Method(POST, GET, PUT, DELETE)를 통해 해당 자원에 대한 CRUD Operation</li>
+            <li>Create : 생성(POST)</li>
+            <li>Read : 조회(GET)</li>
+            <li>Update : 수정(PUT)</li>
+            <li>Delete : 삭제(DELETE)</li>
+          </ul>
+        </p>
+      </li>
+    </ol>
+
+    
+    <ol>
+      <li>
+        <div>context 이해</div>
+        <ul>
+          <li>request/response 처리는 web.xml에서 처리한다  </li>
+          <li>context는 WAS의 자원을 의미하며, 가져다 사용할 수 있게 한다</li>
+        </ul>
+      </li>
+      <li>
+        <div>request/response 제어 방법</div>
+        <ul>
+          <li>
+            <div>filter</div>
+            <p>
+              <img src="images/fig58-1.gif" alt="filter">
+              <pre>
+public class FirstFilter implements javax.servlet.Filter {
+
+  public void init(FilterConfig filterConfig) throws ServletException {
+      // 필터 초기화 작업
+  }
+  
+  public void doFilter(ServletRequest request,
+                        ServletResponse response,
+                        FilterChain chain)
+                        throws IOException, ServletException {
+      // 1. request 파리미터를 이용하여 요청의 필터 작업 수행
+      // 2. 체인의 다음 필터 처리
+      chain.doFilter(request, response);        // 3. response를 이용하여 응답의 필터링 작업 수행
+  }
+  
+  public void destroy() {
+      // 주로 필터가 사용한 자원을 반납
+  }
+}
+              </pre>
+            </p>
+          </li>
+          <li>
+            <div>spring interceptor</div>
+            <img src="images/interceptor.png" alt="">
+            servlet-context.xml
+
+            <code>
+
+<pre>
+<span style="font-family: Consolas">
+<span style="color: #000000">  </span><span style="color: #0000ff">&lt;</span><span style="color: #808000">mvc:interceptors</span><span style="color: #0000ff">&gt;</span>
+<span style="color: #0000ff">&lt;</span><span style="color: #808000">mvc:interceptor</span><span style="color: #0000ff">&gt;</span>
+<span style="color: #0000ff">&lt;</span><span style="color: #808000">mvc:mapping </span><span style="color: #800080">path</span><span style="color: #0000ff">=</span><span style="color: #ff00ff">&quot;/**&quot; </span><span style="color: #0000ff">/&gt;</span><span style="color: #000000"> </span>
+<span style="color: #0000ff">&lt;</span><span style="color: #808000">bean </span><span style="color: #ff0000">class</span><span style="color: #0000ff">=</span><span style="color: #ff00ff">&quot;com.victolee.interceptor.MyInterceptor&quot; </span><span style="color: #0000ff">/&gt;</span>
+<span style="color: #0000ff">&lt;/</span><span style="color: #808000">mvc:interceptor</span><span style="color: #0000ff">&gt;</span>
+<span style="color: #0000ff">&lt;/</span><span style="color: #808000">mvc:interceptors</span><span style="color: #0000ff">&gt;</span>
+</span>
+</pre>
+                    
+
+            </code>
+
+          </li>
+          <li>
+            <div>HandlerInterceptor 인터페이스 구현</div>
+            <pre>
+public class MyInterceptor implements HandlerInterceptor{
+  // controller로 보내기 전에 처리하는 인터셉터
+  // 반환이 false라면 controller로 요청을 안함
+  // 매개변수 Object는 핸들러 정보를 의미한다. ( RequestMapping , DefaultServletHandler ) 
+  @Override
+  public boolean preHandle(
+      HttpServletRequest request, HttpServletResponse response,
+      Object obj) throws Exception {
+    
+    System.out.println("MyInterCeptor - preHandle");
+    return false;
+  }
+
+  // controller의 handler가 끝나면 처리됨
+  @Override
+  public void postHandle(
+      HttpServletRequest request, HttpServletResponse response,
+      Object obj, ModelAndView mav)
+      throws Exception {
+  }
+
+  // view까지 처리가 끝난 후에 처리됨
+  @Override
+  public void afterCompletion(
+      HttpServletRequest request, HttpServletResponse response,
+      Object obj, Exception e)
+      throws Exception {
+  }
+}
+            </pre>
+          </li>
+          <li>
+            <div>HandlerInterceptorAdapter 클래스를 상속 받아 구현</div>
+            <pre>
+public class MyInterceptor extends HandlerInterceptorAdapter {
+  @Override
+  public boolean preHandle(
+      HttpServletRequest request, HttpServletResponse response,
+      Object obj) throws Exception {
+    
+    System.out.println("MyInterCeptor - preHandle");
+    return true;
+  }
+}
+            </pre>
+          </li>
+          <li>AOP</li>
+        </ul>
+      </li>
+    </ol>
+  </div> <!-- contailer -->
+</body>
+</html>
