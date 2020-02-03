@@ -25,12 +25,17 @@ public class MenuController {
     //--------------------------------------------------------------------------
     /**
      *  HashMap 으로 request data 받기 
+     *  formdata 으로 받기 
      */
-    @RequestMapping(value = "/test.do")
+    @RequestMapping(value = "/test1.do")
     public HashMap test1(@RequestParam HashMap<String, Object> map) {
         return new HashMap<>();
     }
 
+    @RequestMapping(value = "/test2.do")
+    public HashMap test2(@ModelAttribute Employee employee) {
+        return new HashMap<>();
+    }
     //--------------------------------------------------------------------------
     /**
      * 메뉴 목록 jsp
