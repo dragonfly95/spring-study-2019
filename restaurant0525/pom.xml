@@ -29,8 +29,8 @@
     <servlet.version>2.5</servlet.version>
 
 
-    <!-- Spring -->
-    <spring-framework.version>5.1.5.RELEASE</spring-framework.version>
+    <!-- Spring 5.1.5.RELEASE 5.1.13 -->
+    <spring-framework.version>5.1.13.RELEASE</spring-framework.version>
 
     <!-- Hibernate / JPA -->
     <hibernate.version>4.2.1.Final</hibernate.version>
