@@ -21,6 +21,17 @@ public class MenuController {
     @Resource
             MenuService menuService;
 
+
+    //--------------------------------------------------------------------------
+    /**
+     *  HashMap 으로 request data 받기 
+     */
+    @RequestMapping(value = "/test.do")
+    public HashMap test1(@RequestParam HashMap<String, Object> map) {
+        return new HashMap<>();
+    }
+
+    //--------------------------------------------------------------------------
     /**
      * 메뉴 목록 jsp
      * @param model
