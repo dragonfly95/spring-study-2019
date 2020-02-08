@@ -44,7 +44,11 @@
         </property>
     </bean>
 
-
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="5242880000" />
+        <property name="maxInMemorySize" value="100000000" />
+    </bean>
+	
     <!-- @Transactional 애노테이션을 sacn하기 위한 설정 -->
     <tx:annotation-driven
             transaction-manager="transactionManager"/>
