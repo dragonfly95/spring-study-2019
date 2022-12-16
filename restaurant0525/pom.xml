@@ -30,7 +30,7 @@
 
 
     <!-- Spring 5.1.5.RELEASE 5.1.13 -->
-    <spring-framework.version>5.1.13.RELEASE</spring-framework.version>
+    <spring-framework.version>5.2.20.RELEASE</spring-framework.version>
 
     <!-- Hibernate / JPA -->
     <hibernate.version>4.2.1.Final</hibernate.version>
