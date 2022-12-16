@@ -34,7 +34,7 @@
     <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
     <jdbc.url><![CDATA[jdbc:mysql://${db.address}/${db.name}?createDatabaseIfNotExist=true]]></jdbc.url>
     <querydsl.version>3.6.7</querydsl.version>
-    <poi.version>3.8</poi.version>
+    <poi.version>4.1.1</poi.version>
     <commons-lang3.version>3.4</commons-lang3.version>
     <config.storage.path>C:/ecommerce/workspace/ecommerce__new/storage</config.storage.path>
   </properties>
